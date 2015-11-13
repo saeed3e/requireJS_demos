@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Sample Project</title>
+    <script type="text/javascript">
+    function loadCss(url) {
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = url;
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }
+    
+    </script>
+    
+    <script type="text/javascript">
+    var authenticated = 1;
+    var jdMedia = null;
+    //alert(jdMedia);
+    var eCode = '';
+    var sqC = '';
+    var eCnfrm = '';
+    var sqCn = '';
+
+    common_ErrorList = {
+        1003: "Please enter your Password",
+        1004: "Please enter your Username",
+        1005: "Please enter your Email ID",
+        1006: "Please re-enter your Email ID",
+        1007: "Password chosen must be minimum 6 characters long",
+        1009: "Password can not be less than [MinL] characters",
+        1010: Object,
+        1011: "Please enter your query",
+        1013: "Please specify a reason",
+        1014: "Required field",
+        1015: "Please enter a valid Email ID",
+        1017: "Please enter your friend's Email ID",
+        1018: "Please specify a Subject",
+        1019: "Please enter a message",
+        1021: Object,
+        1022: "Keyskills should not be blank",
+        1023: "Please give a name to your Job Alert",
+        1024: "Please specify your Email ID",
+        1026: "Please enter your Current Designation",
+        1027: "Special characters are not allowed",
+        2020: "Please enter your name",
+        2021: "Please enter alphabets only",
+        2023: "Please enter a valid mobile number",
+        2025: Object
+    }
+    </script>
+    <script data-main="app" src="lib/require.js" async></script>
+    <script type="text/javascript">
+    loadCss('http://static.naukimg.com/s/4/101/c/common_v26.min.css');
+    loadCss('http://static.naukimg.com/s/4/121/c/jdStyle_v7.min.css')
+    loadCss('http://fonts.googleapis.com/css?family=Roboto:300,400,700')
+    </script>
+</head>
+
+<body>
+    <div class="headGNBWrap">
+        <div class="headGNB cloneCont wrap" itemscope="" itemtype="http://schema.org/Organization">
+            <a href="http://www.naukri.com" itemprop="url" class="fl nLogo"><img itemprop="logo" src="http://static.naukimg.com/s/4/100/i/naukri_Logo.png"></a>
+            <ul class="midSec menu">
+                <li class="mActive"><a href="http://jobsearch.naukri.com" title="Search Jobs" target="_blank"><span class="topIcon jobs">&nbsp;</span><div class="mTxt">Jobs</div></a>
+                    <div class="subMenu c2 fixedRight">
+                        <ul>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com" title="Browse All Jobs">Browse All Jobs</a></li>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com/jobs-by-location" title="Jobs by Location">Jobs by Location</a></li>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com/top-skill-jobs" title="Jobs by Skill">Jobs by Skill</a></li>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com/top-jobs-by-designations" title="Jobs by Designation">Jobs by Designation</a></li>
+                        </ul>
+                        <ul>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com/top-company-jobs" title="Jobs by Company">Jobs by Company</a></li>
+                            <li><a target="_blank" href="http://jobsearch.naukri.com/jobs-by-category" title="Jobs by Category">Jobs by Category</a></li>
+                            <li><a data-domain="http://jobsearch.naukri.com/" class="target_advanceSeachLayer" target="_blank" href="http://jobsearch.naukri.com/advanced-search" title="Advanced Search">Advanced Search</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="http://www.naukri.com/recruiters" title="Search Recruiters" target="_blank"><span class="topIcon jobs Recr">&nbsp;</span><div class="mTxt">Recruiters</div></a>
+                    <div class="subMenu">
+                        <ul>
+                            <li><a target="_blank" href="http://www.naukri.com/recruiters/browse-all-recruiters" title="Browse All Recruiters">Browse All Recruiters</a></li>
+                            <li><a target="_blank" href="http://naukrirecruiter.naukri.com?src=128" title="Go to NaukriRecruiter">Go to NaukriRecruiter</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="http://jobsearch.naukri.com/top-company-jobs" title="Jobs Posted By Top Companies" target="_blank"><span class="topIcon jobs Comp">&nbsp;</span><div class="mTxt">Companies</div></a></li>
+                <li><a href="http://resume.naukri.com/resume-services?fftid=100001&amp;id=" title="Naukri FastForward- Resume Services" target="_blank"><span class="topIcon jobs Serv">&nbsp;</span><div class="mTxt">Services</div></a>
+                    <div class="subMenu c3 fixedRight">
+                        <ul class="group">
+                            <li class="header1"><a title="Resume Writing">Resume Writing</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/resume-writing-for-freshers-entry-level?fftid=101001" title="Text Resume">Text Resume</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/mid-level-experienced-professionals-visual-resume-writing?fftid=101002" title="Visual Resume">Visual Resume</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/resume-quality-score?fftid=101003" title="Resume Quality Score - Free">Resume Quality Score - Free</a></li>
+                            <li class="lastSib"><a target="_blank" href="http://resume.naukri.com/sample-resume-for-freshers?fftid=101004" title="Resume Samples">Resume Samples</a></li>
+                            <li class="header1"><a title="Jobs For You">Jobs For You</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/job-alerts-on-mobile-mail?fftid=101011#jobmail" title="Jobs4U">Jobs4U</a></li>
+                        </ul>
+                        <ul class="group">
+                            <li class="header1"><a>e-Learning</a></li>
+                            <li><a target="_blank" href="http://e-learning.naukri.com/?fftid=101006" title="e-Courses"><span class="newStatus"></span>e-Courses</a></li>
+                            <li class="lastSib"><a target="_blank" href="http://e-learning.naukri.com/?fftid=101007" title="Certifications">Certifications</a></li>
+                            <li class="header1"><a>Recruiter Reach</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/resume-display?fftid=101009" title="Resume Display">Resume Display</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/contact-recruiters-hr?fftid=101010" title="RecruiterConnection"><span class="newStatus"></span>RecruiterConnection</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/priority-job-application?fftid=101019" title="Priority Applicant"><span class="newStatus"></span>Priority Applicant</a></li>
+                        </ul>
+                        <ul class="group">
+                            <li class="header1"><a>Other</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/frequently-asked-questions-faq/?fftid=101013" title="Help/FAQ">Help / FAQ</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/articles/?fftid=101014" title="Career Advice">Career Advice</a></li>
+                            <li><a target="_blank" href="http://resume.naukri.com/contact-us?fftid=101015" title="Contact Us">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="http://naukri.shiksha.com" target="_blank"><span class="topIcon jobs More">&nbsp;</span><div class="mTxt">More</div></a>
+                    <div class="subMenu c3 fixedRight">
+                        <ul class="group">
+                            <li class="header1"><a>Management and Business</a></li>
+                            <li><a target="_blank" href="http://www.shiksha.com/mba/mba-home" title="MBA">MBA</a></li>
+                            <li><a target="_blank" href="http://www.shiksha.com/mba/distance-mba-home" title="Distance MBA">Distance MBA</a></li>
+                            <li class="lastSib"><a target="_blank" href="http://www.shiksha.com/mba/part-time-mba-home" title="Part-Time MBA">Part-Time MBA</a></li>
+                            <li class="header1"><a>Information Technology</a></li>
+                            <li><a target="_blank" href="http://naukri.shiksha.com/mca-colleges-in-india-categorypage-10-98-1-0-0-1-1-2-0-none-1-1" title="MCA">MCA</a></li>
+                        </ul>
+                        <ul class="group">
+                            <li><a target="_blank" href="http://naukri.shiksha.com/mca-distance-education-in-india-categorypage-10-97-1-0-0-1-1-2-0-none-1-1" title="Distance MCA">Distance MCA</a></li>
+                            <li><a target="_blank" href="http://naukri.shiksha.com/computer-programming-language-courses-in-india-categorypage-10-105-1-0-0-1-1-2-0-none-1-1" title="Software Courses">Software Courses</a></li>
+                            <li class="lastSib"><a target="_blank" href="http://naukri.shiksha.com/cisco-certification-courses-in-india-categorypage-10-101-1-0-0-1-1-2-0-none-1-1" title="Hardware Courses">Hardware Courses</a></li>
+                            <li class="header1"><a>Animation, Multimedia</a></li>
+                            <li><a target="_blank" href="http://naukri.shiksha.com/animation-courses-in-india-categorypage-12-89-1-0-0-1-1-2-0-none-1-1" title="Animation">Animation</a></li>
+                            <li><a target="_blank" href="http://naukri.shiksha.com/graphic-designing-courses-in-india-categorypage-12-92-1-0-0-1-1-2-0-none-1-1" title="Graphic Designing">Graphic Designing</a></li>
+                            <li><a target="_blank" href="http://naukri.shiksha.com/web-designing-courses-in-india-categorypage-12-93-1-0-0-1-1-2-0-none-1-1" title="Web Designing">Web Designing</a></li>
+                        </ul>
+                        <ul class="group">
+                            <li class="header1"><a>Study Abroad</a></li>
+                            <li><a target="_blank" href="http://studyabroad.shiksha.com/mba-in-abroad-dc11508" title="MBA">MBA</a></li>
+                            <li><a target="_blank" href="http://studyabroad.shiksha.com/ms-in-abroad-dc11509" title="MS">MS</a></li>
+                            <li class="lastSib"><a target="_blank" href="http://studyabroad.shiksha.com/be-btech-in-abroad-dc11510" title="BE/BTech">BE/BTech</a></li>
+                            <li class="header1"><a>More</a></li>
+                            <li><a target="_blank" href="http://careernavigator.naukri.com" title="Paycheck">Paycheck</a></li>
+                            <li><a target="_blank" href="http://www.naukri.com/mobile" title="Naukri On Mobile">Naukri On Mobile</a></li>
+                            <li><a target="_blank" href="http://blogs.naukri.com" title="Naukri Blog">Blog</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="rghtSec fr menu logged">
+                <li>
+                    <a href="javascript:;">
+                        <div class="topIcon notify"><span>&nbsp;</span></div>
+                        <div class="mTxt">Notifications<span id="rJobCntr" class="rJobCntr" style="display: inline;">20</span></div>
+                    </a>
+                    <div class="subMenu recommendTT fixedRight">
+                        <ul>
+                            <li><a target="_blank" class="blob" id="blobId" href="http://jobsearch.naukri.com/notifications">20 new jobs for you</a></li>
+                        </ul><span class="tip"></span></div>
+                </li>
+                <li>
+                    <a href="http://my.naukri.com/HomePage/view" target="_blank">
+                        <div class="topIcon user"><span style="background-image: url(http://static.naukimg.com/s/4/100/i/silhouette_24.png);">&nbsp;</span></div>
+                        <div class="mTxt">My Naukri</div>
+                    </a>
+                    <div class="subMenu fixedRight">
+                        <ul>
+                            <li><a target="_blank" href="http://my.naukri.com/Profile/edit?id=&amp;altresid" title="Edit Profile">Edit Profile</a></li>
+                            <li><a target="_blank" href="http://my.naukri.com/ProfilePerformance/preview?id=&amp;altresid" title="Who Viewed My Profile">Profile Performance</a></li>
+                            <li><a target="_blank" href="http://my.naukri.com/BlockCompany/view?id=&amp;altresid" title="Blocked Companies">Blocked Companies</a></li>
+                            <li><a target="_blank" href="http://my.naukri.com/ChangePassword/edit?id" title="Change Password">Change Password</a></li>
+                            <li><a class="logout" href="https://login.naukri.com/nLogin/Logout.php" title="Log Out">Log Out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="septr"></div>
+        </div>
+    </div>
+    <h1></h1>
+    <div class="bgImg" itemscope="" itemtype="http://schema.org/JobPosting">
+        <div class="wrap">
+            <div id="rtjMsg" class="msgBar green mt20 dspN">
+                <div class="cnt"></div>
+            </div>
+            <div class="fl lftSec mt45">
+                <div class="jdSum inView">
+                    <div class="sumHd bnr">
+                        <div class="hdSec">
+                            <h1 itemprop="title" class="small_title jobType hotjob"><em></em> Financial Services Distribution and Marketing Business.</h1> <a id="jdCpName" itemprop="hiringOrganization" class="pHead" title="Mount Talent consulting Careers" target="_blank" href="mount-talent-consulting-jobs-careers-259646">Mount Talent consulting  hiring for Professionals into Financial Services Distribution &amp; Marketing Business</a>
+                            <div class="p"><em class="expIcn"></em><span itemprop="experienceRequirements">1 - 6 yrs</span> <em itemprop="jobLocation" itemscope="" itemtype="http://schema.org/Place" class="locIcn"></em>
+                                <div itemprop="name" class="loc"> <a title="Strategy Jobs in Gurgaon" target="_blank" href="/strategy-jobs-in-gurgaon">Gurgaon</a> , <a title="Strategy Jobs in Mumbai" target="_blank" href="/strategy-jobs-in-mumbai">Mumbai</a> , <a title="Strategy Jobs in Bengaluru/Bangalore" target="_blank" href="/strategy-jobs-in-bangalore">Bengaluru/Bangalore</a> , <a title="Strategy Jobs in Chennai" target="_blank" href="/strategy-jobs-in-chennai">Chennai</a> </div>
+                            </div>
+                        </div>
+                        <a class="cmpLogo" href="mount-talent-consulting-jobs-careers-259646" title="View all jobs by this company">
+                            <!-- <img alt="Mount Talent consulting Careers" src="http://www.naukri.com/hotjobs/images/v2/mount_nov13.gif" width="130" height="60" border="0"> -->
+                        </a>
+                    </div>
+                    <div class="sumAct">
+                        <button class="blueBtn" id="trig1">Apply</button>
+                    </div>
+                    <div class="sumFoot"> <span id="favId" class="fav favReady" jid="011115000364">  <em></em></span> <span class="sal "><em></em>   19,00,000 - 34,00,000 P.A. Salary is not a constraint for right candidate  </span> <span>Openings: <strong>20</strong></span> <span>Posted Today</span> <span class="fr"><a id="rtj" href="javascript:">Report this Job</a></span> </div>
+                </div>
+                <div class="JD">
+                    <div class="abtSec">
+                        <h2 class="fl">Job Description</h2>
+                        <div class="fr"><span class="sptr"></span>
+                            <a title="Share Job on Facebook" name="jdfbshare" href="#" onclick="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent('http%3A%2F%2Fjobsearch.naukri.com%2Fjob-listings-Financial-Services-Distribution-and-Marketing-Business--Mount-Talent-consulting-Gurgaon-Mumbai-Bengaluru-Bangalore-Chennai-1-to-6-years-011115000364%3Fsrc%3DjobsearchDesk%26sid%3D14463786589408%26xp%3D4%26qp%3D%26srcPage%3Dsxz%3D0_0_54%26f%3D-011115000364'), 'fshare', 'scrollbars=1,width=700,height=400');return false;" class="fb"></a> <a class="twt" href="https://twitter.com/share?url=http%3A%2F%2Fjobsearch.naukri.com%2Fjob-listings-Financial-Services-Distribution-and-Marketing-Business--Mount-Talent-consulting-Gurgaon-Mumbai-Bengaluru-Bangalore-Chennai-1-to-6-years-011115000364%3Fsrc%3DjobsearchDesk%26sid%3D14463786589408%26xp%3D4%26qp%3D%26srcPage%3Dsxz%3D0_0_54%26f%3D-011115000364" onclick="javascript:void(0)" title="Share Job on Twitter" target="_blank">&nbsp;</a>
+                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fjobsearch.naukri.com%2Fjob-listings-Financial-Services-Distribution-and-Marketing-Business--Mount-Talent-consulting-Gurgaon-Mumbai-Bengaluru-Bangalore-Chennai-1-to-6-years-011115000364%3Fsrc%3DjobsearchDesk%26sid%3D14463786589408%26xp%3D4%26qp%3D%26srcPage%3Dsxz%3D0_0_54%26f%3D-011115000364&amp;title=Hiring for Financial Services Distribution and Marketing Business.  in Gurgaon, Mumbai for Exp. 1 - 6 yrs" onclick="javascript:void(0)" title="Share Job on Linkedin" target="_new" class="ln"></a>
+                        </div> <a title="Create a Job Alert" class="fr" id="idSMJLT" href="http://jobsearch.naukri.com/alert/createsmjlt?ref=011115000364" target="_blank">Send me Jobs like this</a> </div>
+                    <ul itemprop="description" class="listing mt10"> Skills Required:
+                        <br>
+                        <br>
+                        <ul>
+                            <li> 8+ years of experience with leading consulting firms with a prior stint in FS Industry is preferred.</li>
+                            <li> Industry expertise- Candidates with strong industry experience in <b> Banking, Insurance or Capital markets.</b> </li>
+                            <li> Candidate with cross-industry exposure preferred.</li>
+                            <li> Should have worked on Operating model and<b>  Strategy engagements, Business case development, Financial modeling</b> in following industry domain areas:</li>
+                            <li> Digital strategy and implementation</li>
+                            <li> Digital Marketing</li>
+                            <li> Distribution and Sales models</li>
+                            <li> Channel Management</li>
+                            <li> Product Management</li>
+                            <li> Customer Experience design and delivery</li>
+                            <li> Customer Segmentation</li>
+                            <li> Customer Service Management</li>
+                            <li> Marketing and campaigns design and optimization</li>
+                            <li> CRM Strategy and implementation</li>
+                            <li> Omni-channel architecture and design</li>
+                            <li> M-payments</li>
+                            <li> Digital content management</li>
+                            <li> Sales productivity management</li>
+                            <li> Salesforce.com product and implementation.</li>
+                        </ul>
+                        <ul>
+                            <li> Candidates are required to have good mix and exposure to Operations and Technology (operations, technology, front office, back office)</li>
+                            <li> Should have a good knowledge of Customer Relationship Management aspects in Marketing Sales and Service functions and be abreast with the latest industry and technology trends.</li>
+                            <li> The candidate should have a good understanding of the various challenges, business and technology imperatives in New customer models, Omni-channel distribution and marketing space.</li>
+                            <li> Exceptional Microsoft office (excel and power-point) skills and presentation skills.</li>
+                        </ul>
+                        <p> Interested Candidates can send their updated CV on my <b> Email ID:&nbsp; apurva@mounttalent.com or call&nbsp; 9818588837.</b> </p>
+                        <p>
+                            <br> </p>
+                        <p> <b> Thanks &amp; Best Regards,</b> </p>
+                        <p> <b> Apurva Koul</b> </p>
+                        <p> <b> Associate Consultant <br> </b> </p>
+                        <p> <b> Mount Talent Consulting</b> </p>
+                    </ul>
+                    <div class="jDisc mt20">
+                        <p><em>Salary:</em><span itemprop="salaryCurrency">INR</span> <span itemprop="baseSalary"> 19,00,000 - 34,00,000 P.A. Salary is not a constraint for right candidate </span></p>
+                        <p><em>Industry:</em><span itemprop="industry">    <a title="Strategy Jobs" href="http://jobsearch.naukri.com/strategy-jobs" target="_blank">Strategy</a>  /    <a title="Management Consulting Firms Jobs" href="http://jobsearch.naukri.com/management-consulting-firms-jobs" target="_blank">Management Consulting Firms</a>     </span></p>
+                        <p><em>Functional Area:</em><span itemprop="occupationalCategory">     <a title="Sales Jobs" href="http://jobsearch.naukri.com/sales-jobs" target="_blank">Sales </a>  ,    <a title=" Retail Jobs" href="http://jobsearch.naukri.com/retail-jobs" target="_blank"> Retail </a>  ,    <a title=" Business Development Jobs" href="http://jobsearch.naukri.com/business-development-jobs" target="_blank"> Business Development </a>     </span></p>
+                        <p><em>Role Category:</em><span itemprop="occupationalCategory">Corporate Sales</span></p>
+                        <p><em>Role:</em><span itemprop="occupationalCategory">Sales/Business Development Manager</span></p>
+                    </div>
+                    <h3 class="_title">Keyskills</h3>
+                    <div class="ksTags">
+                        <a title="Find all jobs matching strategy" target="_blank" href="strategy-jobs">
+                            <font class="hlite"> strategy</font>
+                        </a>
+                        <a title="Find all jobs matching Digital Communication" target="_blank" href="digital-communication-jobs">
+                            <font class="hlite"> Digital Communication</font>
+                        </a>
+                    </div>
+                    <h4 class="jdHd small_title">Desired Candidate Profile</h4>
+                    <p class="mt10">Education-</p>
+                    <div itemprop="educationRequirements" class="jDisc mt10 edu">
+                        <p><em> UG: </em><span>Any Graduate - Any Specialization, B.Tech/B.E. - Any Specialization</span></p>
+                        <p><em>PG:</em><span>MBA/PGDM - Any Specialization</span></p>
+                        <p><em>Doctorate:</em><span>Doctorate Not Required</span></p>
+                    </div>
+                    <ul class="listing mt15"> Please refer to the Job description above </ul>
+                    <h5 class="small_title cpProf">Company Profile:</h5>
+                    <div itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization" class="mt15 lH20 companyProfile">
+                        <div class="aboutCompany" id="abtComp">
+                            <p itemprop="name" class="cpName f14">Mount Talent consulting</p> <span itemprop="description"> <p class="hireFor"> Professionals into Financial Services Distribution &amp; Marketing Business</p> <div class="discp">  MTC Mount Talent Consulting, an ISO 9001:2008 Certified Company, member of CII, NSDC, NASSCOM, is one of India's leading global HR Consulting firm specializing into multiple facets of HR, Knowledge Services-Training's &amp; Assessments &amp; Consulting. MTC started operations in 2007 with a vision to set new benchmarks while delivering on niche turnkey assignments in the industry. With time we have evolved to cater to a diverse set of clients spread across different geographies. We constantly strive to maximize our client's ROI (Return on Investment) and work on increasing the top line (Revenue) of the client's business by delivering the best. MTC has reached out to an array of clients with functions such as Recruitment's, Consulting &amp; Knowledge Services through its team of young &amp; dynamic professionals.  </div>  </span> </div>
+                        <div class="jdMedia"> <a id="downLoadPPT" style="display:none"><em></em>Download PPT</a> <a id="viewPhoto" style="display:none" href="javascript:;"><em></em>Photo 1</a> </div>
+                    </div> <a href="javascript:void(0)" class="mt30 dspB f14 lH20" id="viewCont_trg">View Contact Details</a>
+                    <div class="jDisc viewContact" id="viewContact"> </div>
+                    <div class="ltBx saQ" id="saQ"> </div>
+                </div>
+                <div class="logReg_Apply sumAct">
+                    <button class="blueBtn" id="trig2">Apply</button>
+                </div>
+                <div class="jdLink"> <a title="View similar jobs" href="/similar-jobs-011115000364" target="_blank">View similar jobs</a> <a id="vjbcp" title="View jobs by Mount Talent consulting" target="_blank" href="mount-talent-consulting-jobs-careers-259646">View jobs by this company</a> <a title="Email this job" id="etj" href="javascript:void(0)">Email this job</a> <a title="Salaries for Sales/Business Development Manager across Strategy / Management Consulting Firms Industry" target="_blank" href="http://careernavigator.naukri.com/Sales-Business-Development-Manager-careers-in-Strategy-Management-Consulting-Firms ">Salaries in Industry</a> </div>
+                <div class="similarJob" id="similar_job"></div>
+                <div class="fatFooter clr">
+                    <div class="info">
+                        <h6 class="info">People who search <span class="searchfor"> this job </span> also searched for the following Keywords</h6></div>
+                    <div id="tab_fatfooter" class="tabbing">
+                        <ul class="tabs">
+                            <li class="active" bind="tabJ-0">Gurgaon</li>
+                            <li bind="tabJ-1">Mumbai</li>
+                            <li bind="tabJ-2">Bangalore</li>
+                            <li bind="tabJ-3">Chennai</li>
+                            <li bind="tabJ-4">Delhi NCR</li>
+                        </ul>
+                        <div class="anchorList colspan_two tabCont" id="tabJ-0" style="display:block">
+                            <ul class="column">
+                                <li><a title="Strategy Jobs in Gurgaon" href="http://jobsearch.naukri.com/strategy-jobs-in-gurgaon" target="_blank">Strategy Jobs in Gurgaon</a></li>
+                                <li><a title="Planning Jobs in Gurgaon" href="http://jobsearch.naukri.com/planning-jobs-in-gurgaon" target="_blank">Planning Jobs in Gurgaon</a></li>
+                                <li><a title="Research Jobs in Gurgaon" href="http://jobsearch.naukri.com/research-jobs-in-gurgaon" target="_blank">Research Jobs in Gurgaon</a></li>
+                            </ul>
+                            <ul class="column noBrd">
+                                <li><a title="Digital Communication Jobs in Gurgaon" href="http://jobsearch.naukri.com/digital-communication-jobs-in-gurgaon" target="_blank">Digital Communication Jobs in Gurgaon</a></li>
+                                <li><a title="Marketing Jobs in Gurgaon" href="http://jobsearch.naukri.com/marketing-jobs-in-gurgaon" target="_blank">Marketing Jobs in Gurgaon</a></li>
+                            </ul>
+                        </div>
+                        <div class="anchorList colspan_two tabCont" id="tabJ-1">
+                            <ul class="column">
+                                <li><a title="Strategy Jobs in Mumbai" href="http://jobsearch.naukri.com/strategy-jobs-in-mumbai" target="_blank">Strategy Jobs in Mumbai</a></li>
+                                <li><a title="Planning Jobs in Mumbai" href="http://jobsearch.naukri.com/planning-jobs-in-mumbai" target="_blank">Planning Jobs in Mumbai</a></li>
+                                <li><a title="Research Jobs in Mumbai" href="http://jobsearch.naukri.com/research-jobs-in-mumbai" target="_blank">Research Jobs in Mumbai</a></li>
+                            </ul>
+                            <ul class="column noBrd">
+                                <li><a title="Digital Communication Jobs in Mumbai" href="http://jobsearch.naukri.com/digital-communication-jobs-in-mumbai" target="_blank">Digital Communication Jobs in Mumbai</a></li>
+                                <li><a title="Marketing Jobs in Mumbai" href="http://jobsearch.naukri.com/marketing-jobs-in-mumbai" target="_blank">Marketing Jobs in Mumbai</a></li>
+                            </ul>
+                        </div>
+                        <div class="anchorList colspan_two tabCont" id="tabJ-2">
+                            <ul class="column">
+                                <li><a title="Strategy Jobs in Bangalore" href="http://jobsearch.naukri.com/strategy-jobs-in-bangalore" target="_blank">Strategy Jobs in Bangalore</a></li>
+                                <li><a title="Planning Jobs in Bangalore" href="http://jobsearch.naukri.com/planning-jobs-in-bangalore" target="_blank">Planning Jobs in Bangalore</a></li>
+                                <li><a title="Research Jobs in Bangalore" href="http://jobsearch.naukri.com/research-jobs-in-bangalore" target="_blank">Research Jobs in Bangalore</a></li>
+                            </ul>
+                            <ul class="column noBrd">
+                                <li><a title="Digital Communication Jobs in Bangalore" href="http://jobsearch.naukri.com/digital-communication-jobs-in-bangalore" target="_blank">Digital Communication Jobs in Bangalore</a></li>
+                                <li><a title="Marketing Jobs in Bangalore" href="http://jobsearch.naukri.com/marketing-jobs-in-bangalore" target="_blank">Marketing Jobs in Bangalore</a></li>
+                            </ul>
+                        </div>
+                        <div class="anchorList colspan_two tabCont" id="tabJ-3">
+                            <ul class="column">
+                                <li><a title="Strategy Jobs in Chennai" href="http://jobsearch.naukri.com/strategy-jobs-in-chennai" target="_blank">Strategy Jobs in Chennai</a></li>
+                                <li><a title="Planning Jobs in Chennai" href="http://jobsearch.naukri.com/planning-jobs-in-chennai" target="_blank">Planning Jobs in Chennai</a></li>
+                                <li><a title="Research Jobs in Chennai" href="http://jobsearch.naukri.com/research-jobs-in-chennai" target="_blank">Research Jobs in Chennai</a></li>
+                            </ul>
+                            <ul class="column noBrd">
+                                <li><a title="Digital Communication Jobs in Chennai" href="http://jobsearch.naukri.com/digital-communication-jobs-in-chennai" target="_blank">Digital Communication Jobs in Chennai</a></li>
+                                <li><a title="Marketing Jobs in Chennai" href="http://jobsearch.naukri.com/marketing-jobs-in-chennai" target="_blank">Marketing Jobs in Chennai</a></li>
+                            </ul>
+                        </div>
+                        <div class="anchorList colspan_two tabCont" id="tabJ-4">
+                            <ul class="column">
+                                <li><a title="Strategy Jobs in Delhi NCR" href="http://jobsearch.naukri.com/strategy-jobs-in-delhi-ncr" target="_blank">Strategy Jobs in Delhi NCR</a></li>
+                                <li><a title="Planning Jobs in Delhi NCR" href="http://jobsearch.naukri.com/planning-jobs-in-delhi-ncr" target="_blank">Planning Jobs in Delhi NCR</a></li>
+                                <li><a title="Research Jobs in Delhi NCR" href="http://jobsearch.naukri.com/research-jobs-in-delhi-ncr" target="_blank">Research Jobs in Delhi NCR</a></li>
+                            </ul>
+                            <ul class="column noBrd">
+                                <li><a title="Digital Communication Jobs in Delhi NCR" href="http://jobsearch.naukri.com/digital-communication-jobs-in-delhi-ncr" target="_blank">Digital Communication Jobs in Delhi NCR</a></li>
+                                <li><a title="Marketing Jobs in Delhi NCR" href="http://jobsearch.naukri.com/marketing-jobs-in-delhi-ncr" target="_blank">Marketing Jobs in Delhi NCR</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="fatfooter_bot" style="height: 1px; width: 1px;"></div>
+                <div class="sponsLinkCont" id="sponsLinkCont" style="min-height:150px"> <em class="crnrTlt"></em><em class="crnrTrt"></em>
+                    <div class="sponsLinks">
+                    </div> <em class="crnrBlt"></em><em class="crnrBrt"></em> </div>
+                <div>
+                    <br>IEIL has taken all reasonable steps to ensure that information on this site is authentic. Applicants are advised to research bonafides of advertisers independently. IEIL shall not have any responsibility in this regard. We also recommend that you visit <a href="http://my.naukri.com/faq/faq.php?pgid=9" target="_blank">Security Guidelines </a> and <a href="http://jobsearch.naukri.com/mynaukri/mn_termsconditions.php" target="_blank">Terms and Conditions</a> for more comprehensive information on this aspect.
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="fr rgtBar mt45">
+                <div class="careerNavSal wgtCont">
+                    <h3 class="cnLogo"></h3>
+                    <p class="blocTxt">Salary trends in over 3500 Companies</p>
+                    <a href="http://careernavigator.naukri.com/Sales-Business-Development-Manager-careers-in-Strategy-Management-Consulting-Firms">
+                        <button class="lightCyanBtn" id="cjaMain">View Salaries</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

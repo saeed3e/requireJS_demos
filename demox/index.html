@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Sample Project</title>
+    <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+</head>
+
+<body>
+	<style>
+	ul{float: left; width: 200px}
+	</style>
+    <script data-main="j/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.js" async></script>
+    <h1>This demo shows using require DOM rendering not blocked</h1>
+    <ul id="cont">
+    	<h3>Content injected by inline js</h3>
+    </ul>
+    <ul id="cont2">
+    	<h3>Content injected by last file</h3>
+    </ul>
+    <script type="text/javascript">
+    var i = 0;
+    setInterval(function() {
+        var node = document.createElement('li');
+        node.innerHTML =  'Tuple Number: ' + i++;
+        document.getElementById('cont').appendChild(node);
+    }, 1000);
+    </script>
+</body>
+
+</html>
